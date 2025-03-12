@@ -1,0 +1,7 @@
+window.addEventListener("DOMContentLoaded"()=>{
+    const faq = [
+        {dt: "Q. 자주 묻는 질문",
+         dd: "A. 질문 답변입니다."
+        }
+    ]
+})

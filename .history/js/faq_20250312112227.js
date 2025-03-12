@@ -1,0 +1,69 @@
+window.addEventListener("DOMContentLoaded",()=>{
+    const faq = [
+        {
+        dt: "1. 제품이 문제가 있을 때 해결 방법입니다", 
+        dd: "이렇게 저렇게 요렇게 이렇게 저렇게 요렇게이렇게 저렇게 요렇게 이렇게 저렇게 요렇게하세요"
+        },
+        {
+        dt: "2. 배송에 문제가 생겼어요", 
+        dd: "이렇게 저렇게 요렇게 이렇게 저렇게 요렇게이렇게 저렇게 요렇게 이렇게 저렇게 요렇게하세요"
+        },
+        {
+        dt: "3. 제품을 교환/환불하고 싶어요", 
+        dd: "이렇게 저렇게 요렇게 이렇게 저렇게 요렇게이렇게 저렇게 요렇게 이렇게 저렇게 요렇게하세요"
+        },
+        {
+        dt: "4. 제품이 문제가 있을 때 해결 방법입니다", 
+        dd: "이렇게 저렇게 요렇게 이렇게 저렇게 요렇게이렇게 저렇게 요렇게 이렇게 저렇게 요렇게하세요"
+        },
+        {
+        dt: "5. 제품이 문제가 있을 때 해결 방법입니다", 
+        dd: "이렇게 저렇게 요렇게 이렇게 저렇게 요렇게이렇게 저렇게 요렇게 이렇게 저렇게 요렇게하세요"
+        },
+    ]
+
+    const faqdom = document.querySelector("#faq dl");  //정적개체는 위치 자유
+    //dl객체 저장
+
+    let faqtag = ``; //태그저장할 변수 선언
+    // <dt class="border-top py-3 d-flex justify-content-between">
+    //                 <strong>${faq[0].dt}</strong>
+    //                 <i class="bi bi-chevron-down"></i>
+    //             </dt>
+    //             <dd class="border-bottom py-3 bg-light">${faq[0]["dd"]}</dd>`;
+        
+    // for(let x=0; x<faq.length; x++){
+        
+    // }
+    // for(x in faq){
+    //     x의 대상은 숫자
+    // }
+
+    for(x of faq){  //for문으로 생성된 데이터 누적, 저장
+        //x의 대상은 Object
+        faqtag +=`<dt class="border-top py-3 d-flex justify-content-between">
+                    <strong>${x["dt"]}</strong>
+                    <i class="bi bi-chevron-down"></i>
+                    </dt>
+                <dd class="border-bottom py-3 bg-light">${x.dd}</dd>`;
+    }
+
+    faqdom.innerHTML = faqtag;
+    //dl에 누적된 데이터를 태그로 출력. 동적개체 출력 완료
+
+    const faqlist = document.querySelectorAll("#faq dt");
+    //동적개체 dt들을 저장, 나열하기
+
+    let count = 0;  //주기적으로 변하게 될 숫자변수
+
+    
+    faqlist[0].classList.add("active");  //1회
+
+    setInterval(() => {
+        count++;
+        count %=faq.length;
+        
+        faqlist[count].classList.add("active");
+    }, 3000);  //3초마다
+
+})
