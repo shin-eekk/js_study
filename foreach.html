@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foreach</title>
+    <style>
+        #sns{
+            list-style: none;
+        }
+        .insta{
+            background-color: pink;
+        }
+        .faceb{
+            background-color: lightskyblue;
+        }
+        .youtube{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul id="sns">  
+        <li data-cls="insta" data-en="inst"><a href="">인스타</a></li>
+        <li data-cls="faceb" data-en="faceb"><a href="">페이스북</a></li>
+        <li data-cls="youtube" data-en="youtube"><a href="">유투브</a></li>
+        <li data-cls="insta" data-en="git"><a href="">인스타2</a></li>
+        <li data-cls="insat" data-en="cou"><a href="">인스타3</a></li>
+        <li data-cls="faceb" data-en="11st"><a href="">페이스북2</a></li>
+    </ul>
+    <script>
+        const snslist = document.querySelectorAll("#sns li");  //js와 html을 연결
+        
+        //확인하기
+        console.log("데이터타입",typeof snslist);
+        //문자, 숫자, null, undefined, object, boolean (배열)
+        console.log("데이터는?", snslist);
+        console.log("배열이야?", Array.isArray(snslist));
+        //배열형 데이터. 배열처럼 보일뿐, 배열이 아님
+
+        //snslist[0].classList.add("insta");
+        //snslist[1].classList.add("faceb");
+        //snslist[2].classList.add("youtube");
+        snslist.forEach((ele, i)=>{
+            ele.classList.add("insta")
+        }) //전체 insta 
+
+        /*snslist.forEach((ele, i)=>{
+            if(i==0) ele.classList.add("insta")
+            if(i==1) ele.classList.add("faceb")
+            if(i==2) ele.classList.add("youtube")
+            if(i%2) ele.classList.add("youtube")  //0은 false 그 외는 모두 true
+        })*/
+        snslist.forEach((ele, i)=>{
+            const mycls = ele.dataset.cls;
+            const mylang= ele.dataset.en;
+            ele.classList.add(mycls);
+            ele.querySelector("a").innerHTML = mylang
+        })
+
+        
+        const galleryPosts = [ 
+        {  title: "아름다운 해변",
+            imageUrl: "https://example.com/images/beach.jpg", 
+            author: "홍길동", 
+            date: "2025-03-10" }, 
+        { 
+            title: "도시 야경", 
+            imageUrl: "https://example.com/images/city-night.jpg", 
+            author: "김철수", 
+            date: "2025-03-09" }, 
+        {
+            title: "산속의 오두막",
+            imageUrl: "https://example.com/images/cabin.jpg",
+            author: "이영희", 
+            date: "2025-03-08" 
+        }
+        ];
+
+       // alert(galleryPosts[2]["title"])  //산속의 오두막
+        alert(`${galleryPosts[2]["author"]}는 ${galleryPosts[2]["title"]}을 좋아합니다`)
+
+        galleryPosts.forEach((v, i)=>{
+            console.log(v, i)
+        })
+    </script>
+</body>
+</html>
